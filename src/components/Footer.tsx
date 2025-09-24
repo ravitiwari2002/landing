@@ -1,75 +1,118 @@
 import React from 'react';
-const navigation = [
-  {
-    label: 'Product',
-    items: [
-      ['Features', '#features'],
-      ['Models', '#models'],
-      ['Use Cases', '#use-cases'],
-      ['Pricing', '#pricing']
-    ]
-  },
-  {
-    label: 'Resources',
-    items: [
-      ['Documentation', '#'],
-      ['API Reference', '#'],
-      ['Guides', '#'],
-      ['Community', '#']
-    ]
-  },
-  {
-    label: 'Company',
-    items: [
-      ['About', '#'],
-      ['Careers', '#'],
-      ['Privacy', '#'],
-      ['Terms', '#']
-    ]
-  }
-];
 const Footer = () => {
-  return <footer className="relative border-t border-white/40 bg-white/90 py-20">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-apple-gray-200 to-transparent"></div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-          <div className="space-y-5">
-            <div className="flex items-center space-x-3">
-              <span className="inline-flex h-2 w-2 rounded-full bg-primary shadow-[0_0_15px_rgba(0,119,237,0.6)]"></span>
-              <span className="text-lg font-semibold tracking-tight text-apple-gray-900">Viora</span>
-            </div>
-            <p className="max-w-xs text-sm leading-relaxed text-apple-gray-500">
-              The multi-model intelligence platform crafted with a meticulous, human-centred aesthetic.
+  return <footer className="bg-apple-gray-900 text-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Viora AI</h3>
+            <p className="text-apple-gray-300 mb-4">
+              The multi-model intelligence platform for the future of AI
             </p>
-            <div className="flex space-x-4 text-apple-gray-400">
-              {['Twitter', 'LinkedIn', 'Instagram'].map(network => <a key={network} href="#" className="transition-colors hover:text-apple-gray-900">
-                  <span className="sr-only">{network}</span>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/80 shadow-[0_10px_30px_-25px_rgba(0,0,0,0.8)]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 5h13M3 12h18M8 19h13" />
-                    </svg>
-                  </div>
-                </a>)}
+            <div className="flex space-x-4">
+              <a href="#" className="text-apple-gray-300 hover:text-white">
+                <span className="sr-only">Twitter</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="#" className="text-apple-gray-300 hover:text-white">
+                <span className="sr-only">LinkedIn</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
             </div>
           </div>
-          {navigation.map(section => <div key={section.label} className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-apple-gray-400">{section.label}</h3>
-              <ul className="space-y-3 text-sm text-apple-gray-600">
-                {section.items.map(item => <li key={item[0]}>
-                    <a href={item[1]} className="transition-colors hover:text-apple-gray-900">
-                      {item[0]}
-                    </a>
-                  </li>)}
-              </ul>
-            </div>)}
+          <div>
+            <h3 className="text-lg font-medium mb-4">Product</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#features" className="text-apple-gray-300 hover:text-white">
+                  Features
+                </a>
+              </li>
+              <li>
+                <a href="#models" className="text-apple-gray-300 hover:text-white">
+                  Models
+                </a>
+              </li>
+              <li>
+                <a href="#use-cases" className="text-apple-gray-300 hover:text-white">
+                  Use Cases
+                </a>
+              </li>
+              <li>
+                <a href="#pricing" className="text-apple-gray-300 hover:text-white">
+                  Pricing
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Documentation
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  API Reference
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Community
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-apple-gray-300 hover:text-white">
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-16 flex flex-col gap-6 border-t border-white/60 pt-8 text-sm text-apple-gray-400 md:flex-row md:items-center md:justify-between">
-          <p>&copy; {new Date().getFullYear()} Viora. Crafted with clarity.</p>
-          <div className="flex flex-wrap gap-6">
-            <a href="#" className="hover:text-apple-gray-900">Privacy</a>
-            <a href="#" className="hover:text-apple-gray-900">Terms</a>
-            <a href="#" className="hover:text-apple-gray-900">Cookies</a>
-            <a href="#" className="hover:text-apple-gray-900">Accessibility</a>
+        <div className="border-t border-apple-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-apple-gray-400">
+            &copy; {new Date().getFullYear()} Viora AI. All rights reserved.
+          </p>
+          <div className="mt-4 md:mt-0 flex space-x-6">
+            <a href="#" className="text-apple-gray-400 hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-apple-gray-400 hover:text-white">
+              Terms of Service
+            </a>
+            <a href="#" className="text-apple-gray-400 hover:text-white">
+              Cookie Policy
+            </a>
           </div>
         </div>
       </div>
