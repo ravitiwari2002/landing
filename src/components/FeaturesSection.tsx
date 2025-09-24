@@ -1,87 +1,51 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { ZapIcon, LayersIcon, UsersIcon, GlobeIcon } from 'lucide-react';
-const features = [{
-  title: 'Multi-Model Access',
-  description: 'Compare and use 100+ AI models side by side, from industry leaders to open-source innovations.',
-  icon: LayersIcon,
-  color: 'from-blue-400 to-blue-600',
-  hoverColor: 'from-blue-500 to-blue-700',
-  bgLight: 'bg-blue-50'
-}, {
-  title: 'Real-time Comparison',
-  description: 'See how different AI models respond to the same prompt instantly, highlighting unique strengths.',
-  icon: ZapIcon,
-  color: 'from-purple-400 to-purple-600',
-  hoverColor: 'from-purple-500 to-purple-700',
-  bgLight: 'bg-purple-50'
-}, {
-  title: 'Collaborative Workspace',
-  description: 'Share prompts and results with your team, maintaining a centralized AI testing environment.',
-  icon: UsersIcon,
-  color: 'from-green-400 to-green-600',
-  hoverColor: 'from-green-500 to-green-700',
-  bgLight: 'bg-green-50'
-}, {
-  title: 'Global Knowledge Base',
-  description: 'Access our extensive library of optimized prompts for various use cases and industries.',
-  icon: GlobeIcon,
-  color: 'from-orange-400 to-orange-600',
-  hoverColor: 'from-orange-500 to-orange-700',
-  bgLight: 'bg-orange-50'
-}];
+const features = [
+  {
+    title: 'Unified orchestration',
+    description: 'Direct prompts to 100+ leading AI models with a single command and instantly see their unique strengths.',
+    icon: LayersIcon
+  },
+  {
+    title: 'Precision comparison',
+    description: 'Timeline views, tone checks, and side-by-side outputs help your team choose the best response faster.',
+    icon: ZapIcon
+  },
+  {
+    title: 'Team-native workspace',
+    description: 'Share threads, leave inline notes, and co-create prompts in a polished environment built for collaboration.',
+    icon: UsersIcon
+  },
+  {
+    title: 'Continuous insight',
+    description: 'Tap into curated prompt libraries and usage analytics that stay in sync with your organisation’s goals.',
+    icon: GlobeIcon
+  }
+];
 const FeaturesSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const scrollY = window.scrollY;
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const windowHeight = window.innerHeight;
-      // Calculate how far through the section we've scrolled
-      const scrollProgress = (scrollY - (sectionTop - windowHeight)) / (sectionHeight + windowHeight);
-      if (scrollProgress > 0 && scrollProgress < 1) {
-        cardsRef.current.forEach((card, index) => {
-          if (card) {
-            const delay = index * 0.1;
-            const translateY = Math.max(0, 50 * (0.5 - Math.min(1, Math.max(0, scrollProgress - delay))));
-            card.style.transform = `translateY(${translateY}px)`;
-            card.style.opacity = Math.min(1, Math.max(0, scrollProgress * 2 - delay));
-          }
-        });
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  return <section id="features" className="py-24 bg-apple-gray-50" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4">
-            Advanced Features
+  return <section id="features" className="relative py-28">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-apple-gray-200 to-transparent"></div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center space-y-6 reveal">
+          <h2 className="text-3xl md:text-4xl font-semibold text-apple-gray-900">
+            Built for people who expect more from AI
           </h2>
-          <p className="text-xl text-apple-gray-600 max-w-3xl mx-auto">
-            Discover the power of multi-model AI comparison with our innovative
-            platform
+          <p className="max-w-3xl text-lg text-apple-gray-500">
+            Viora condenses complex multi-model workflows into a calm, beautifully minimal interface. Everything feels effortless so your teams can focus on decisions, not dashboards.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => <div key={feature.title} ref={el => cardsRef.current[index] = el} className={`${feature.bgLight} rounded-2xl shadow-lg p-6 transition-all duration-500 hover:shadow-xl group`} style={{
-          opacity: 0,
-          transform: 'translateY(50px)'
-        }}>
-              <div className={`rounded-full w-12 h-12 flex items-center justify-center bg-gradient-to-r ${feature.color} mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:bg-gradient-to-r group-hover:${feature.hoverColor}`}>
-                <feature.icon className="h-6 w-6 text-white" />
+        <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {features.map(feature => <div key={feature.title} className="reveal rounded-[28px] border border-white/60 bg-white/80 p-10 backdrop-blur-sm transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-45px_rgba(0,0,0,0.5)]">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-apple-gray-900/90 text-white shadow-[0_10px_25px_-15px_rgba(0,0,0,0.6)]">
+                <feature.icon className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-apple-gray-800 mb-3 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-apple-gray-900">
                 {feature.title}
               </h3>
-              <p className="text-apple-gray-600">{feature.description}</p>
-              <div className="h-1 w-0 bg-gradient-to-r from-transparent via-primary to-transparent mt-4 transition-all duration-500 group-hover:w-full"></div>
+              <p className="mt-4 text-base leading-relaxed text-apple-gray-500">
+                {feature.description}
+              </p>
+              <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
             </div>)}
         </div>
       </div>

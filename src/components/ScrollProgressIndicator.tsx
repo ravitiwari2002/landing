@@ -14,11 +14,10 @@ const ScrollProgressIndicator = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  return <div className="fixed top-0 left-0 w-full h-1 z-50">
-      <div className="h-full bg-gradient-to-r from-blue-400 via-primary to-purple-500" style={{
-      width: `${scrollProgress}%`,
-      transition: 'width 0.2s ease-out'
-    }}></div>
+  return <div className="pointer-events-none fixed top-0 left-0 z-50 w-full">
+      <div className="mx-auto h-[2px] max-w-6xl overflow-hidden rounded-full bg-apple-gray-200/60">
+        <div className="h-full bg-apple-gray-900 transition-all duration-200" style={{ width: `${scrollProgress}%` }}></div>
+      </div>
     </div>;
 };
 export default ScrollProgressIndicator;
